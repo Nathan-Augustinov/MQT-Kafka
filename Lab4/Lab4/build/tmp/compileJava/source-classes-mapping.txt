@@ -1,0 +1,10 @@
+consumer/SlowConsumer.java
+ consumer.SlowConsumer
+ consumer.SlowConsumer$1
+org/example/Main.java
+ org.example.Main
+consumer/ExampleConsumer.java
+ consumer.ExampleConsumer
+ consumer.ExampleConsumer$1
+consumer/SimpleExampleConsumer.java
+ consumer.SimpleExampleConsumer
