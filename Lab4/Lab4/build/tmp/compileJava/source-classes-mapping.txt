@@ -1,10 +1,18 @@
-consumer/SlowConsumer.java
- consumer.SlowConsumer
- consumer.SlowConsumer$1
-org/example/Main.java
- org.example.Main
 consumer/ExampleConsumer.java
  consumer.ExampleConsumer
  consumer.ExampleConsumer$1
+consumer/TransactionalConsumer.java
+ consumer.TransactionalConsumer
 consumer/SimpleExampleConsumer.java
  consumer.SimpleExampleConsumer
+org/example/Main.java
+ org.example.Main
+consumer/SlowConsumer.java
+ consumer.SlowConsumer
+ consumer.SlowConsumer$1
+producer/AvroCompany.java
+ producer.AvroCompany
+ producer.AvroCompany$Builder
+consumer/AvroConsumer.java
+ consumer.AvroConsumer
+ consumer.AvroConsumer$1

@@ -1,10 +1,21 @@
+producer/SimpleExampleProducer.java
+ producer.SimpleExampleProducer
+producer/TransactionalProducer.java
+ com.luxoft.eas026.module3.TransactionalProducer
 producer/AsynchronousSimpleProducer.java
  producer.AsynchronousSimpleProducer
 org/example/Main.java
  org.example.Main
 producer/SynchronousSimpleProducer.java
  producer.SynchronousSimpleProducer
+producer/Company.java
+ producer.Company
 producer/ExampleProducer.java
  producer.ExampleProducer
-producer/SimpleExampleProducer.java
- producer.SimpleExampleProducer
+producer/JsonProducer.java
+ producer.JsonProducer
+producer/AvroCompany.java
+ producer.AvroCompany
+ producer.AvroCompany$Builder
+producer/CompanyProducer.java
+ producer.CompanyProducer
