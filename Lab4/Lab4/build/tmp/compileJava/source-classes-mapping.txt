@@ -1,10 +1,15 @@
 consumer/ExampleConsumer.java
  consumer.ExampleConsumer
  consumer.ExampleConsumer$1
+json/JCompany.java
+ json.JCompany
 consumer/TransactionalConsumer.java
  consumer.TransactionalConsumer
 consumer/SimpleExampleConsumer.java
  consumer.SimpleExampleConsumer
+json/JConsumer.java
+ json.JConsumer
+ json.JConsumer$1
 org/example/Main.java
  org.example.Main
 consumer/SlowConsumer.java

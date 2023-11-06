@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "199ad58a-fce6-4265-a849-b718a2064c70",
+		"name": "MQT-Kafka-Lab6",
+		"description": "Postman endpoints for creating Kafka topics, listing them, describing them, creating and deleting consumers, sending data on topics and consuming it.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20953234"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/v3/clusters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/v3/clusters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v3",
+						"clusters"
+					]
+				},
+				"description": "Endpoint for getting the cluster id."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/v3/clusters/X55eACiwTZ2vqWj3HiELDA/topics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/v3/clusters/X55eACiwTZ2vqWj3HiELDA/topics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v3",
+						"clusters",
+						"X55eACiwTZ2vqWj3HiELDA",
+						"topics"
+					]
+				},
+				"description": "Endpoint for showing the details of all the topics of the specified by ID, in the endpoint url, cluster."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/v3/clusters/X55eACiwTZ2vqWj3HiELDA/topics",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"topic_name\" : \"postman_topic\" \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/v3/clusters/X55eACiwTZ2vqWj3HiELDA/topics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v3",
+						"clusters",
+						"X55eACiwTZ2vqWj3HiELDA",
+						"topics"
+					]
+				},
+				"description": "Endpoint for creating a new topic in the cluster. The newly created topic name is in the endpoint's body."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/v3/clusters/{{cluster_id}}/topics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/v3/clusters/{{cluster_id}}/topics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v3",
+						"clusters",
+						"{{cluster_id}}",
+						"topics"
+					]
+				},
+				"description": "Creating a new environment variable for storing the cluster's ID, and showing the details of all the cluster's topics."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/v3/clusters/{{cluster_id}}/topics/postman_topic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/v3/clusters/{{cluster_id}}/topics/postman_topic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v3",
+						"clusters",
+						"{{cluster_id}}",
+						"topics",
+						"postman_topic"
+					]
+				},
+				"description": "Endpoint for showing the details of a specific topic in the cluster."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/v3/clusters/{{cluster_id}}/topics/postman_topic/records",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"key\": { \"type\": \"JSON\", \"data\": \"key1\" },\r\n    \"value\": { \"type\": \"JSON\", \"data\": \"value1 Buna\" }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/v3/clusters/{{cluster_id}}/topics/postman_topic/records",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v3",
+						"clusters",
+						"{{cluster_id}}",
+						"topics",
+						"postman_topic",
+						"records"
+					]
+				},
+				"description": "Endpoint for sending messages on a specific topic. The topic name is in the endpoint url, and the message, that will be sent, is in the body."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/consumers/HappyGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.kafka.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"FirstConsumer\", \"format\": \"json\", \"auto.offset.reset\": \"earliest\"\r\n}   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/consumers/HappyGroup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"consumers",
+						"HappyGroup"
+					]
+				},
+				"description": "Creating a new consumer that is part of a specific consumer group. The details of the consumer are in the endpoint's body, written as a json object."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer/subscription",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.kafka.v2+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"topics\": [\"postman_topic\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer/subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"consumers",
+						"HappyGroup",
+						"instances",
+						"FirstConsumer",
+						"subscription"
+					]
+				},
+				"description": "Endpoint for subscribing a consumer to different topics. The topics, that the consumer will be subscribed to, are written in the endpoints body, as an array."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer/records",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.kafka.v2+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.kafka.json.v2+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer/records",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"consumers",
+						"HappyGroup",
+						"instances",
+						"FirstConsumer",
+						"records"
+					]
+				},
+				"description": "Endpoint for showing the unconsumed messages by a specific consumer."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"consumers",
+						"HappyGroup",
+						"instances",
+						"FirstConsumer"
+					]
+				},
+				"description": "Endpoint for deleting a specific consumer."
+			},
+			"response": []
+		}
+	]
+}

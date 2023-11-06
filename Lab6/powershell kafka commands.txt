@@ -1,0 +1,27 @@
+curl http://localhost:8082/v3/clusters - getting the cluster id
+
+Invoke-WebRequest -Uri http://localhost:8082/v3/clusters | Select-Object -Expand Content - getting more details about the cluster
+
+$cluster="X55eACiwTZ2vqWj3HiELDA" - setting the cluster id
+
+$body = @{ "topic_name" ="curl_topic" }
+$headers = @{  'Content-Type'='application/json' }
+ 
+Invoke-WebRequest -Method 'Post' -Uri "http://localhost:8082/v3/clusters/$cluster/topics" -Body ($body|ConvertTo-Json) -Headers $headers -ContentType "application/json"  | Select-Object -Expand Content - creating a new topic with the topic's name in the body variable.
+
+curl "http://localhost:8082/v3/clusters/$cluster/topics" - getting the cluster's topics details
+
+curl  "http://localhost:8082/v3/clusters/$cluster/topics/curl_topic" - describing the newly created topic
+
+curl -X POST -H "Content-Type: application/json" --data '{ \"key\": { \"type\": \"JSON\", \"data\": \"key1\" }, \"value\": { \"type\": \"JSON\", \"data\": \"value2 seara\" } }' "http://localhost:8082/v3/clusters/$cluster/topics/curl_topic/records" - sending data on a specific topic
+
+curl -X POST -H "Content-Type: application/vnd.kafka.v2+json"  --data '{\"name\": \"FirstConsumer\", \"format\": \"json\", \"auto.offset.reset\": \"earliest\"}'   http://localhost:8082/consumers/HappyGroup - creating a new consumer, which is part of a specific consumer group
+
+curl -X POST -H "Content-Type: application/vnd.kafka.v2+json"  --data '{\"topics\": [\"curl_topic\"]}' http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer/subscription - subscribing the new consumer to a list of topics
+
+curl -X GET  -H "Content-Type: application/vnd.kafka.json.v2+json" -H "Accept: application/vnd.kafka.json.v2+json"  "http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer/records" - getting the unconsumed messages by a specific consumer
+
+curl -X DELETE  -H "Content-Type: application/vnd.kafka.v2+json"  http://localhost:8082/consumers/HappyGroup/instances/FirstConsumer - deleting a consumer
+
+
+ 

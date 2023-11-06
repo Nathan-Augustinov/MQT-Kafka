@@ -19,3 +19,7 @@ producer/AvroCompany.java
  producer.AvroCompany$Builder
 producer/CompanyProducer.java
  producer.CompanyProducer
+json/JCompany.java
+ json.JCompany
+json/JProducer.java
+ json.JProducer
